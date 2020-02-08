@@ -1,10 +1,10 @@
 package service;
 
-import ro.iteahome.exceptions.dao.UserDAO;
-import ro.iteahome.exceptions.exception.BikeSharingException;
-import ro.iteahome.exceptions.exception.BikeSharingUserAlreadyExistsException;
-import ro.iteahome.exceptions.exception.BikeSharingWrongCredentialsException;
-import ro.iteahome.exceptions.model.User;
+import dao.UserDAO;
+import exception.BikeSharingException;
+import exception.BikeSharingUserAlreadyExistsException;
+import exception.BikeSharingWrongCredentialsException;
+import model.User;
 
 public class UserService {
 

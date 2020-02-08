@@ -1,13 +1,12 @@
 package dao;
 
-import ro.iteahome.exceptions.exception.BikeSharingFileException;
-import ro.iteahome.exceptions.exception.BikeSharingTechnicalException;
-import ro.iteahome.exceptions.model.User;
+import exception.BikeSharingFileException;
+import exception.BikeSharingTechnicalException;
+import model.User;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class UserDAO {
 

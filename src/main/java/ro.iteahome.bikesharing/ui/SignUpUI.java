@@ -1,9 +1,10 @@
 package ui;
 
-import ro.iteahome.exceptions.exception.*;
-import ro.iteahome.exceptions.model.User;
-import ro.iteahome.exceptions.service.UserService;
-import ro.iteahome.exceptions.ui.validator.UserValidator;
+import exception.BikeSharingException;
+import exception.BikeSharingWrongCredentialsException;
+import model.User;
+import service.UserService;
+import ui.validator.UserValidator;
 
 import java.util.Scanner;
 
