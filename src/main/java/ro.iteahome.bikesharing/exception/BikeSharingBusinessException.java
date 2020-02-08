@@ -1,6 +1,6 @@
-package exception;
+package ro.iteahome.bikesharing.exception;
 
-public class BikeSharingBusinessException extends BikeSharingException{
+public class BikeSharingBusinessException extends BikeSharingException {
 
     public BikeSharingBusinessException() {
     }

@@ -1,6 +1,6 @@
-package exception;
+package ro.iteahome.bikesharing.exception;
 
-public class BikeSharingInvalidEmailFormatException extends BikeSharingBusinessException{
+public class BikeSharingInvalidEmailFormatException extends BikeSharingBusinessException {
 
     public BikeSharingInvalidEmailFormatException(){
     }

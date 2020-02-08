@@ -1,8 +1,8 @@
-package ui;
+package ro.iteahome.bikesharing.ui;
 
-import ro.iteahome.exceptions.exception.BikeSharingException;
-import ro.iteahome.exceptions.exception.BikeSharingWrongCredentialsException;
-import ro.iteahome.exceptions.service.UserService;
+import ro.iteahome.bikesharing.exception.BikeSharingException;
+import ro.iteahome.bikesharing.exception.BikeSharingWrongCredentialsException;
+import ro.iteahome.bikesharing.service.UserService;
 
 import java.util.Scanner;
 

@@ -1,12 +1,13 @@
-package dao;
+package ro.iteahome.bikesharing.dao;
 
-import exception.BikeSharingFileException;
-import exception.BikeSharingTechnicalException;
-import model.User;
+import ro.iteahome.bikesharing.exception.BikeSharingFileException;
+import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
+import ro.iteahome.bikesharing.model.User;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class UserDAO {
 

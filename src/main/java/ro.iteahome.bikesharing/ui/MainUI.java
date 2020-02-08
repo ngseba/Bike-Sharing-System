@@ -1,4 +1,4 @@
-package ui;
+package ro.iteahome.bikesharing.ui;
 
 public class MainUI {
 

@@ -1,11 +1,15 @@
-package ui.validator;
+package ro.iteahome.bikesharing.ui.validator;
 
-import ro.iteahome.exceptions.exception.*;
+import ro.iteahome.bikesharing.exception.BikeSharingException;
+import ro.iteahome.bikesharing.exception.BikeSharingInvalidEmailFormatException;
+import ro.iteahome.bikesharing.exception.BikeSharingInvalidPasswordFormatException;
+import ro.iteahome.bikesharing.exception.BikeSharingPasswordTooShortException;
+
 import java.util.regex.Pattern;
 
 public class UserValidator {
 
-    public void validateUserCredentials(String email, String password) throws BikeSharingException{
+    public void validateUserCredentials(String email, String password) throws BikeSharingException {
         try {
             validateEmailFormat(email);
             ValidatePasswordFormat(password);

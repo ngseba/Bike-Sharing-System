@@ -1,6 +1,6 @@
-package exception;
+package ro.iteahome.bikesharing.exception;
 
-public class BikeSharingPasswordTooShortException extends BikeSharingBusinessException{
+public class BikeSharingPasswordTooShortException extends BikeSharingBusinessException {
 
     public BikeSharingPasswordTooShortException(){
     }

@@ -1,6 +1,4 @@
-package exception;
-
-import exception.BikeSharingBusinessException;
+package ro.iteahome.bikesharing.exception;
 
 public class BikeSharingUserAlreadyExistsException extends BikeSharingBusinessException {
 
