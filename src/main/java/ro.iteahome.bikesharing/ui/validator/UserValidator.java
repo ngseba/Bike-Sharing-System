@@ -11,6 +11,7 @@ public class UserValidator {
 
     public void validateUserCredentials(String email, String password) throws BikeSharingException {
         try {
+            //TO DO: validate existing email& existing id
             validateEmailFormat(email);
             ValidatePasswordFormat(password);
             validatePasswordLength(password);

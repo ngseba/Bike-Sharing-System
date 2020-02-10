@@ -18,7 +18,7 @@ public class UserDAO {
         try (BufferedReader userReader = new BufferedReader(new FileReader(USERS_FILE))) {
             String userLine = userReader.readLine();
             String[] userValues = userLine.split(";");
-            userList.add(new User(userValues[0], userValues[1]));
+            userList.add(new User(Integer.parseInt(userValues[0]), Integer.parseInt(userValues[1]), userValues[2], userValues[3]));
         } catch (IOException e) {
             throw new BikeSharingFileException("Error reading users", e);
         }
@@ -30,6 +30,10 @@ public class UserDAO {
         try (FileWriter writer = new FileWriter(USERS_FILE, true);
              BufferedWriter bw = new BufferedWriter(writer)) {
             bw.newLine();
+            bw.write(String.valueOf(user.getId()));
+            bw.write(";");
+            bw.write(String.valueOf(user.getIsAdmin()));
+            bw.write(";");
             bw.write(user.getEmail());
             bw.write(";");
             bw.write(user.getPassword());

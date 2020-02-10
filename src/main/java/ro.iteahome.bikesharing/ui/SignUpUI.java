@@ -21,14 +21,22 @@ public class SignUpUI {
         String email = scanner.nextLine();
         System.out.println("Password: ");
         String password = scanner.nextLine();
+        System.out.println("Admin user? (yes/no): ");
+        String isAdminText = scanner.nextLine();
+        int isAdmin = isAdminText.equals("yes") ? 1 : 0;
+
         try {
             userValidator.validateUserCredentials(email, password);
 
             user.setEmail(email);
             user.setPassword(password);
+            user.setIsAdmin(isAdmin);
+
+            //TO DO: id handling& id validation
+            user.setId(1);
 
             userService.signUp(user);
-            System.out.println("User successfully registered: " + email);
+            System.out.println("User successfully registered: " + user.getId() + " " + email + " " + user.getIsAdmin());
         } catch (BikeSharingWrongCredentialsException e) {
             e.printStackTrace();
             System.out.println("Wrong Credentials");
