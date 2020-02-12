@@ -18,7 +18,11 @@ public class UserDAO {
         try (BufferedReader userReader = new BufferedReader(new FileReader(USERS_FILE))) {
             String userLine = userReader.readLine();
             String[] userValues = userLine.split(";");
-            userList.add(new User(Integer.parseInt(userValues[0]), Integer.parseInt(userValues[1]), userValues[2], userValues[3]));
+            int id = Integer.parseInt(userValues[0]);
+            int isAdmin = Integer.parseInt(userValues[1]);
+            String email = userValues[2];
+            String password = userValues[3];
+            userList.add( new User(id, isAdmin, email, password));
         } catch (IOException e) {
             throw new BikeSharingFileException("Error reading users", e);
         }

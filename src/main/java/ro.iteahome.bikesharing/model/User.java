@@ -2,11 +2,10 @@ package ro.iteahome.bikesharing.model;
 
 public class User {
 
-    private String email;
-    private String password;
     private int id;
     private int isAdmin;
-
+    private String email;
+    private String password;
 
     public User() {
         this.id = -1;
