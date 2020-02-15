@@ -9,10 +9,10 @@ import ro.iteahome.bikesharing.model.User;
 
 public class UserService {
 
-    private UserDAO userDao= new UserDAO();
+    private UserDAO userDao = new UserDAO();
 
     public User login(String inputEmail, String inputPassword) throws BikeSharingException {
-        for (User user: userDao.readAllUsers()) {
+        for (User user : userDao.readAllUsers()) {
             if (inputEmail.equals(user.getEmail()) && inputPassword.equals(user.getPassword())) {
                 return user;
             }
@@ -22,7 +22,7 @@ public class UserService {
 
     public void signUp(User newUser) throws BikeSharingException {
 
-        for (User user: userDao.readAllUsers()) {
+        for (User user : userDao.readAllUsers()) {
             if (newUser.getEmail().equals(user.getEmail())) {
                 throw new BikeSharingUserAlreadyExistsException();
             }
@@ -30,4 +30,17 @@ public class UserService {
 
         userDao.writeUser(newUser);
     }
+
+
+    public int generateUserId() throws BikeSharingException {
+        if (!userDao.readAllUsers().isEmpty()) {
+            for (User user : userDao.readAllUsers()) {
+                System.out.println(user);
+            }
+            return userDao.readAllUsers().size() + 1;
+        }
+        return 1;
+    }
+
+
 }

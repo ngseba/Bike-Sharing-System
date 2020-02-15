@@ -21,6 +21,8 @@ public class SignUpUI {
         String email = scanner.nextLine();
         System.out.println("Password: ");
         String password = scanner.nextLine();
+        System.out.println("Name : ");
+        String name = scanner.nextLine();
         System.out.println("Admin user? (yes/no): ");
         String isAdminText = scanner.nextLine();
         int isAdmin = isAdminText.equals("yes") ? 1 : 0;
@@ -31,9 +33,10 @@ public class SignUpUI {
             user.setEmail(email);
             user.setPassword(password);
             user.setIsAdmin(isAdmin);
+            user.setName(name);
 
             //TO DO: id handling& id validation
-            user.setId(1);
+            user.setId(userService.generateUserId());
 
             userService.signUp(user);
             System.out.println("User successfully registered: " + user.getId() + " " + email + " " + user.getIsAdmin());

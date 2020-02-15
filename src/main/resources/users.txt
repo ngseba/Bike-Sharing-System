@@ -1,5 +1,2 @@
-1;0;itea@gmail.com;pass1A
-2;1;george@gmail.com;pass1A
-1;1;new@mail.com;12Abcde
-1;1;new@mail.com;AS12as
-1;0;mail@test.com;123ABc
+1;1;seba.ng@yahoo.com;abcd1234;Seba
+2;1;florin@gmail.com;abcd1234;Florin

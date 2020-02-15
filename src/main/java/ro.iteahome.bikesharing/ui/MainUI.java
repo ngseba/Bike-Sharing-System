@@ -7,7 +7,10 @@ public class MainUI {
 
 
     public void start() {
-        //loginUI.displayLogin();
         signUpUI.displaySignUp();
+        signUpUI.displaySignUp();
+
+        loginUI.displayLogin();
+
     }
 }
