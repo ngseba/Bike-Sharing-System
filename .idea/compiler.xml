@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bike sharing" />
+        <module name="team-project-bike-sharing" />
       </profile>
     </annotationProcessing>
   </component>

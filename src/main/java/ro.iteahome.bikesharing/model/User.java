@@ -6,20 +6,38 @@ public class User {
     private int isAdmin;
     private String email;
     private String password;
+    private String name;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", isAdmin=" + isAdmin +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
     public User() {
         this.id = -1;
         this.isAdmin = 0;
         this.email = "";
         this.password = "";
+        this.name = "";
     }
 
-    public User(int id, int isAdmin, String email, String password) {
+    public User(int id, int isAdmin, String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
         this.id = id;
+        this.name = name;
     }
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
 
     public String getEmail() {
         return email;
