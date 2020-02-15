@@ -8,9 +8,9 @@ public class MainUI {
 
     public void start() {
         signUpUI.displaySignUp();
-        signUpUI.displaySignUp();
+        //signUpUI.displaySignUp();
 
-        loginUI.displayLogin();
+        //loginUI.displayLogin();
 
     }
 }
