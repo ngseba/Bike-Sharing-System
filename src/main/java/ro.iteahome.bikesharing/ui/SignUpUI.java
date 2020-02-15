@@ -35,7 +35,6 @@ public class SignUpUI {
             user.setIsAdmin(isAdmin);
             user.setName(name);
 
-            //TO DO: id handling& id validation
             user.setId(userService.generateUserId());
 
             userService.signUp(user);

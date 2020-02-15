@@ -5,7 +5,13 @@ import java.util.ArrayList;
 public class Station {
     private int id;
     private String name;
-    private ArrayList<ro.iteahome.bikesharing.model.Bike> availableBikes;
+    ArrayList<Bike> availableBikes = new ArrayList<>();
+
+
+    public Station(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -23,14 +29,26 @@ public class Station {
         this.name = name;
     }
 
-    public ArrayList<ro.iteahome.bikesharing.model.Bike> getAvailableBikes() {
-        return availableBikes;
+    public Station getStationById(int id){ return this;}
+
+    public void addBike(Bike bike){
+        this.availableBikes.add(bike);
     }
 
-    public Station(int id, String name, ArrayList<ro.iteahome.bikesharing.model.Bike> availableBikes) {
-        this.id = id;
-        this.name = name;
-        this.availableBikes = availableBikes;
+    public ArrayList<Bike> getAvailableBikes(){
+        if(this.availableBikes != null)
+            return this.availableBikes;
+        else System.out.println("Station"+this.getName()+" has no available bikes");
+        return null;
     }
+
+    @Override
+    public String toString() {
+        return "Station{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
 
 }
