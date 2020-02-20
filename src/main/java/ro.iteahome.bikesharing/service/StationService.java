@@ -5,6 +5,7 @@ import ro.iteahome.bikesharing.dao.StationDAO;
 import ro.iteahome.bikesharing.exception.BikeSharingException;
 import ro.iteahome.bikesharing.exception.BikeSharingStationAlreadyExistsException;
 import ro.iteahome.bikesharing.exception.BikeSharingStationDoesNotExistException;
+import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
 import ro.iteahome.bikesharing.model.Station;
 
 public class StationService {
@@ -42,6 +43,9 @@ public class StationService {
         throw new BikeSharingStationDoesNotExistException();
     }
 
-
+    public void printOutAllStations() throws BikeSharingTechnicalException {
+        for (Station station : stationDAO.readAllStations())
+            System.out.println(station.toString());
+    }
 
 }

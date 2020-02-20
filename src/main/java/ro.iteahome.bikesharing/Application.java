@@ -7,76 +7,45 @@ import ro.iteahome.bikesharing.exception.BikeSharingStationAlreadyExistsExceptio
 import ro.iteahome.bikesharing.exception.BikeSharingStationDoesNotExistException;
 import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
 import ro.iteahome.bikesharing.model.Bike;
+import ro.iteahome.bikesharing.model.Bike_Station;
 import ro.iteahome.bikesharing.model.Station;
 import ro.iteahome.bikesharing.service.BikeService;
+import ro.iteahome.bikesharing.service.BikeStationService;
 import ro.iteahome.bikesharing.ui.MainUI;
 import ro.iteahome.bikesharing.service.StationService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, BikeSharingTechnicalException {
         //new MainUI().start();
 
-        // Admin UI ADD STATION
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Station Name: ");
-        String name = scanner.nextLine();
+        BikeStationDAO bsdao = new BikeStationDAO();
 
-        try {
-            StationService stationService = new StationService();
-            int id = stationService.generateStationId();
-            Station station = new Station(id, name);
-            stationService.addStation(station);
-            System.out.println("Station successfully added: " + station.getId() + " " + station.getName());
-        } catch (BikeSharingStationAlreadyExistsException e) {
-            e.printStackTrace();
-            System.out.println("Station already exists");
-        } catch (BikeSharingException e) {
-            e.printStackTrace();
-        }
 
-        // ADMIN UI ADD BIKES
-        //Scanner scanner = new Scanner(System.in);
-        System.out.println("Bike Brand: ");
-        String brand = scanner.nextLine();
+        BikeStationService bss = new BikeStationService();
 
-        try {
-            BikeService bikeService = new BikeService();
-            int bikeId = bikeService.generateBikeId();
-            Bike bike = new Bike(bikeId, brand);
-            bikeService.addBike(bike);
-            System.out.println("Bike successfully added: " + bike.getId() + " " + bike.getBrand());
-            System.out.println("To which station do you want to assign the bike ? ");
-            StationDAO stationDAO = new StationDAO();
-            List<Station> stationList = stationDAO.readAllStations();
-            for (Station station : stationList)
-                System.out.println(station);
-            int stationId = scanner.nextInt();
-            BikeStationDAO bikeStationDAO = new BikeStationDAO();
-            bikeStationDAO.writeBikeToStation(stationId, bikeId);
-        } catch (BikeSharingTechnicalException e) {
-            e.printStackTrace();
-        } catch (BikeSharingException e) {
-            e.printStackTrace();
-            System.out.println("Could not add bike.");
-        }
-        try {
-            BikeStationDAO bikeStationDAO = new BikeStationDAO();
-            List<Station> stationList = bikeStationDAO.readBikeToStation();
-            for (Station station : stationList) {
-                System.out.println(station.getAvailableBikes().size());
-                for (Bike bike : station.getAvailableBikes()) {
-                System.out.println(bike);
-            }
-            }
 
-        } catch (BikeSharingTechnicalException | BikeSharingStationDoesNotExistException e) {
-            e.printStackTrace();
-        }
+        bsdao.writeBikeToStation(1,6);
+        bsdao.writeBikeToStation(2,6);
+        bsdao.writeBikeToStation(3,6);
+        bsdao.writeBikeToStation(4,6);
+        bsdao.writeBikeToStation(5,6);
+        bsdao.writeBikeToStation(6,6);
+        bsdao.writeBikeToStation(7,6);
 
+
+        bss.moveBikeFromStartStationToDestinationStation(1, 6, 2);
+
+
+
+        //Bike_Station bs1 = new Bike_Station(1, 1);
+        //Bike_Station bs2 = new Bike_Station(2, 1);
+
+        //bsdao.removeOldPosition(bs1);
 
     }
 
