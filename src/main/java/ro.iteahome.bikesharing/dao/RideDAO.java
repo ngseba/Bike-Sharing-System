@@ -32,7 +32,7 @@ public class RideDAO {
         return rideList;
     }
 
-    public void writeRide(Ride ride) throws BikeSharingTechnicalException {
+    public void writeBike(Ride ride) throws BikeSharingTechnicalException {
 
         try (FileWriter writer = new FileWriter(RIDES_FILE, true);
              BufferedWriter bw = new BufferedWriter(writer)) {
