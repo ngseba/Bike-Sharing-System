@@ -10,22 +10,22 @@ import java.util.Scanner;
 
 public class SignUpUI {
 
-    private UserService userService = new UserService();
-    private UserValidator userValidator = new UserValidator();
+    public static void displaySignUp() {
 
-    public void displaySignUp() {
         User user = new User();
         Scanner scanner = new Scanner(System.in);
         System.out.println("You are registering to the bike sharing system! Welcome among us!");
-        System.out.println("Email: ");
+        System.out.println("Enter your Email: ");
         String email = scanner.nextLine();
-        System.out.println("Password: ");
+        System.out.println("Create a Password: ");
         String password = scanner.nextLine();
-        System.out.println("Name : ");
+        System.out.println("Enter your Name : ");
         String name = scanner.nextLine();
         System.out.println("Admin user? (yes/no): ");
         String isAdminText = scanner.nextLine();
         int isAdmin = isAdminText.equals("yes") ? 1 : 0;
+        UserService userService = new UserService();
+        UserValidator userValidator = new UserValidator();
 
         try {
             userValidator.validateUserCredentials(email, password);
