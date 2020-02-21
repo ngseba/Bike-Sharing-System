@@ -66,7 +66,6 @@ public class RideService {
     //get all rides for a certain station by stationId - MOST POPULAR STATION
     //returns empty list or list of rides
     public ArrayList<Ride> getAllRidesByStartStationId(int startStationId) throws BikeSharingException {
-
         ArrayList rides = new ArrayList<Ride>();
         if (!rideDAO.readAllRides().isEmpty()) {
             for (Ride ride : rideDAO.readAllRides()) {

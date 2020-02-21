@@ -1,1 +1,7 @@
-1;DHS
+2;DHS
+3;Pegas
+4;Pegas
+5;DHS
+6;CityBike
+7;AAA
+1;AAA
