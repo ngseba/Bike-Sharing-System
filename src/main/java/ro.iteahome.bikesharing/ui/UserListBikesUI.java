@@ -8,6 +8,8 @@ import static java.lang.System.exit;
 
 public class UserListBikesUI {
 
+    public static String valuefromscanner;
+
     public static void listStations() {
 
         ListStationsDAO.printStations();
@@ -19,31 +21,21 @@ public class UserListBikesUI {
         Scanner userOptions = new Scanner(System.in);
         String option = userOptions.nextLine();
 
+        String valuefromscanner = option;
+
         try {
             switch (option) {
                 case "1":
-                    //
-                    break;
                 case "2":
-                    //
-                    break;
                 case "3":
-                    break;
                 case "4":
-                    //
-                    break;
                 case "5":
-                    //
                 case "6":
-                    //
                 case "7":
-                    //
                 case "8":
-                    //
                 case "9":
-                    //
                 case "10":
-                    //
+                    UserListBikesFromStationUI.listBikesfromStation();
                 case "b":
                 case "B":
                     UserOptionsUI.enteringUserOptionsUI();

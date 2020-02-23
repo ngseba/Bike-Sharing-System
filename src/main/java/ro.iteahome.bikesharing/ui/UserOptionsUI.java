@@ -2,6 +2,7 @@ package ro.iteahome.bikesharing.ui;
 
 import ro.iteahome.bikesharing.dao.ListStationsDAO;
 import ro.iteahome.bikesharing.exception.BikeSharingException;
+import ro.iteahome.bikesharing.service.RideService;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -25,16 +26,16 @@ public class UserOptionsUI {
                     AddRideUI.displayAddRideUI();
                     break;
                 case "2":
-                    //
+                    //RideService.printrideslist();
                     break;
                 case "3":
                     UserListBikesUI.listStations();
                     break;
                 case "4":
-                    //
+                    //ride service
                     break;
                 case "5":
-                    //
+                    //ride service
                 case "b":
                 case "B":
                     SignUpUI.MainUI.enteringUI();
