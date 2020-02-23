@@ -1,5 +1,6 @@
 package ro.iteahome.bikesharing.ui;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import ro.iteahome.bikesharing.exception.BikeSharingException;
 import ro.iteahome.bikesharing.exception.BikeSharingWrongCredentialsException;
 import ro.iteahome.bikesharing.service.UserService;
@@ -22,9 +23,11 @@ public class LoginUI {
                 UserOptionsUI userOptionsUI = new UserOptionsUI();
                 userOptionsUI.enteringUserOptionsUI();
 
+                //TODO Treat exception further and return user to main screen.
+
             } catch (BikeSharingWrongCredentialsException e) {
                 e.printStackTrace();
-                System.out.println("Wrong Credentials");
+                System.out.println("Wrong Username or Password. Please try again.");
             } catch (BikeSharingException e) {
                 e.printStackTrace();
             }

@@ -1,17 +1,17 @@
 package ro.iteahome.bikesharing.ui;
 
 import ro.iteahome.bikesharing.dao.ListStationsDAO;
-import ro.iteahome.bikesharing.exception.BikeSharingException;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-public class UserOptionsUI {
-    public static void enteringUserOptionsUI() {
-        printMainMessageAndHandleAction("What do you want to do today? \n" + "1. Ride.\n" + "2. View Previous Rides.\n" +
-                "3. View All Stations.\n" + "4. View Most Used Stations.\n" + "5. Most Used Bikes.\n" + "B. Go back. \n" + "X. Exit session.");
+public class UserListBikesUI {
+
+    public static void listStations() {
+
+        ListStationsDAO.printStations();
+        printMainMessageAndHandleAction("\nPick a station number to view bikes docked at that station. \n" + "B. Go back. \n" + "X. Exit session.");
     }
 
     public static void printMainMessageAndHandleAction(String message) {
@@ -22,22 +22,31 @@ public class UserOptionsUI {
         try {
             switch (option) {
                 case "1":
-                    AddRideUI.displayAddRideUI();
+                    //
                     break;
                 case "2":
                     //
                     break;
                 case "3":
-                    UserListBikesUI.listStations();
                     break;
                 case "4":
                     //
                     break;
                 case "5":
                     //
+                case "6":
+                    //
+                case "7":
+                    //
+                case "8":
+                    //
+                case "9":
+                    //
+                case "10":
+                    //
                 case "b":
                 case "B":
-                    SignUpUI.MainUI.enteringUI();
+                    UserOptionsUI.enteringUserOptionsUI();
                 case "x":
                 case "X":
                     System.out.println("You have terminated your session. Thank you and see you soon!");
@@ -47,8 +56,7 @@ public class UserOptionsUI {
 
 
                 default:
-                    printMainMessageAndHandleAction("Error. Not a valid option. Press: \n" + "1. To Ride.\n" + "2. View Previous Rides.\n" + "3. View All Stations.\n" +
-                            "4. View Most Used Stations.\n" + "5. View Most Used Bikes.\n" + "B. Go back. \n" + "X. Exit session.");
+                    printMainMessageAndHandleAction("Error. Not a valid option. Pick a station number to view bikes docked at that station. \n" + "B. Go back. \n" + "X. Exit session.");
                     return;
 
             }
