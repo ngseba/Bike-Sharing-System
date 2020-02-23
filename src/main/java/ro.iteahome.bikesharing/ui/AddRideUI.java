@@ -12,12 +12,12 @@ import java.util.Scanner;
 
 public class AddRideUI {
 
-    private StationService stationService = new StationService();
-    private BikeService bikeService = new BikeService();
-    private RideService rideService = new RideService();
-    private BikeStationService bikeStationService = new BikeStationService();
+    public static StationService stationService = new StationService();
+    private static BikeService bikeService = new BikeService();
+    private static RideService rideService = new RideService();
+    private static BikeStationService bikeStationService = new BikeStationService();
 
-    public void displayAddRideUI() throws BikeSharingException, IOException {
+    public static void displayAddRideUI() throws BikeSharingException, IOException {
 
         Scanner scanner = new Scanner(System.in);
 
