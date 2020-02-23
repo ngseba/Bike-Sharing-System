@@ -8,11 +8,7 @@ import java.io.IOException;
 public class Application {
 
     public static void main(String[] args) throws BikeSharingException, IOException {
-        //new ro.iteahome.bikesharing.MainUI().enteringUI();
-
-
-        RideService rs = new RideService();
-        rs.getSortedListOfOccurencesByStartStation(5);
+        new ro.iteahome.bikesharing.MainUI().enteringUI();
     }
 
 }
