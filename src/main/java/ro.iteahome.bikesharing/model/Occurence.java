@@ -30,8 +30,12 @@ public class Occurence implements Comparable<Occurence>{
         this.numberOfOccurences = numberOfOccurences;
     }
 
+    public void increaseNumberOfOccurences() {
+        this.numberOfOccurences++;
+    }
+
     @java.lang.Override
     public int compareTo(Occurence occurence) {
-        return this.numberOfOccurences - occurence.numberOfOccurences;
+        return occurence.numberOfOccurences - this.numberOfOccurences;
     }
 }

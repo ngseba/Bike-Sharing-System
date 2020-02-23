@@ -4,9 +4,12 @@ import ro.iteahome.bikesharing.dao.RideDAO;
 import ro.iteahome.bikesharing.exception.BikeSharingException;
 import ro.iteahome.bikesharing.exception.BikeSharingRideDoesNotExistException;
 
+import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
+import ro.iteahome.bikesharing.model.Occurence;
 import ro.iteahome.bikesharing.model.Ride;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RideService {
 
@@ -77,5 +80,35 @@ public class RideService {
         return rides;
     }
 
-    //test push from office
+    //methot to get a sorted list of stations
+    //based of the number of occurences in the rides file
+    //station that has been used as a startStation most times
+    //will be first
+    //n defines how many of that list we want
+    public void getSortedListOfOccurencesByStartStation(int n) throws BikeSharingTechnicalException {
+        List<Occurence> occurencesByStation = new ArrayList();
+        List<Integer> listOfExistingIds = new ArrayList();
+        for (Ride ride : rideDAO.readAllRides()) {
+            Occurence newOccurence = new Occurence(ride.getStartStationId(), 1);
+            if (occurencesByStation.isEmpty()) {
+                occurencesByStation.add(newOccurence);
+                listOfExistingIds.add(newOccurence.getId());
+            }
+            else
+                if (listOfExistingIds.contains(newOccurence.getId()))
+                    for (Occurence o : occurencesByStation) {
+                        if (o.getId() == newOccurence.getId())
+                            o.increaseNumberOfOccurences();
+                    }
+                else {
+                    occurencesByStation.add(newOccurence);
+                    listOfExistingIds.add(newOccurence.getId());
+                }
+
+            }
+        occurencesByStation.sort(Occurence::compareTo);
+        for (Occurence o : occurencesByStation)
+            System.out.println("Station with id " + o.getId() + " has been used " + o.getNumberOfOccurences() + " times");
+
+        }
 }
