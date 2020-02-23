@@ -1,15 +1,15 @@
 package ro.iteahome.bikesharing.model;
 
-public class Occurence implements Comparable<Occurence>{
+public class Occurrence implements Comparable<Occurrence>{
     int id;
     int numberOfOccurences;
 
-    public Occurence(int id, int numberOfOccurences) {
+    public Occurrence(int id, int numberOfOccurences) {
         this.id = id;
         this.numberOfOccurences = numberOfOccurences;
     }
 
-    public Occurence() {
+    public Occurrence() {
         this.id = -1;
         this.numberOfOccurences = -1;
     }
@@ -35,7 +35,7 @@ public class Occurence implements Comparable<Occurence>{
     }
 
     @java.lang.Override
-    public int compareTo(Occurence occurence) {
-        return occurence.numberOfOccurences - this.numberOfOccurences;
+    public int compareTo(Occurrence occurrence) {
+        return occurrence.numberOfOccurences - this.numberOfOccurences;
     }
 }
