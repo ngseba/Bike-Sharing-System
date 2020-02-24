@@ -1,15 +1,14 @@
-package ro.iteahome.bikesharing;
-
-import ro.iteahome.bikesharing.ui.LoginUI;
-import ro.iteahome.bikesharing.ui.SignUpUI;
+package ro.iteahome.bikesharing.ui;
 
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+import static ro.iteahome.bikesharing.ui.SignUpUI.displaySignUp;
 
 public class MainUI {
 
-    void enteringUI() {
-        printMainMessageAndHandleAction("Welcome to the BikeSharing System. Would you like to: \n" + "1. Log in.\n" + "2. Sign up.\n");
+    public static void enteringUI() {
+        printMainMessageAndHandleAction("Welcome to the BikeSharing System. Would you like to: \n" + "1. Log in.\n" + "2. Sign up.\n" + "X. Exit session.");
     }
 
     public static void printMainMessageAndHandleAction(String message) {
@@ -23,10 +22,14 @@ public class MainUI {
                     LoginUI.displayLogin();
                     break;
                 case "2":
-                    SignUpUI.displaySignUp();
+                    displaySignUp();
                     break;
+                case "x":
+                case "X":
+                    System.out.println("You have terminated your session. Thank you and see you soon!");
+                    exit(0);
                 default:
-                    printMainMessageAndHandleAction("Error. Not a valid option. Press: \n" + "1. to Log in... or\n" + "2. To Sign up.\n");
+                    printMainMessageAndHandleAction("Error. Not a valid option. Press: \n" + "1. to Log in... \n" + "2. To Sign up, or...\n" + "X. To Exit session.");
                     return;
 
             }

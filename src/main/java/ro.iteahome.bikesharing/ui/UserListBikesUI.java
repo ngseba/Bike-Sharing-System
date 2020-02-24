@@ -35,7 +35,7 @@ public class UserListBikesUI {
                 case "8":
                 case "9":
                 case "10":
-                    UserListBikesFromStationUI.listBikesfromStation();
+//                    UserListBikesFromStationUI.listBikesfromStation();
                 case "b":
                 case "B":
                     UserOptionsUI.enteringUserOptionsUI();

@@ -1,10 +1,5 @@
 package ro.iteahome.bikesharing.ui;
 
-import ro.iteahome.bikesharing.dao.ListStationsDAO;
-import ro.iteahome.bikesharing.exception.BikeSharingException;
-import ro.iteahome.bikesharing.service.RideService;
-
-import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -38,7 +33,7 @@ public class UserOptionsUI {
                     //ride service
                 case "b":
                 case "B":
-                    SignUpUI.MainUI.enteringUI();
+                    MainUI.enteringUI();
                 case "x":
                 case "X":
                     System.out.println("You have terminated your session. Thank you and see you soon!");
