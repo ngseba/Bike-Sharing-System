@@ -1,17 +1,20 @@
 package ro.iteahome.bikesharing.ui;
 
+import sun.rmi.runtime.Log;
+
 import java.util.Scanner;
 
 import static java.lang.System.exit;
-import static ro.iteahome.bikesharing.ui.SignUpUI.displaySignUp;
 
 public class MainUI {
 
-    public static void enteringUI() {
+    LoginUI loginUI = new LoginUI();
+    SignUpUI signUpUI = new SignUpUI();
+    public  void enteringUI() {
         printMainMessageAndHandleAction("Welcome to the BikeSharing System. Would you like to: \n" + "1. Log in.\n" + "2. Sign up.\n" + "X. Exit session.");
     }
 
-    public static void printMainMessageAndHandleAction(String message) {
+    public  void printMainMessageAndHandleAction(String message) {
         System.out.println(message);
         Scanner firstSteps = new Scanner(System.in);
         String option = firstSteps.nextLine();
@@ -19,10 +22,10 @@ public class MainUI {
         try {
             switch (option) {
                 case "1":
-                    LoginUI.displayLogin();
+                    this.loginUI.displayLogin();
                     break;
                 case "2":
-                    displaySignUp();
+                    this.signUpUI.displaySignUp();
                     break;
                 case "x":
                 case "X":
@@ -37,6 +40,9 @@ public class MainUI {
             e.printStackTrace();
         }
 
+    }
+
+    private static void displaySignUp() {
     }
 
 }

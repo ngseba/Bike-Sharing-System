@@ -2,12 +2,11 @@ package ro.iteahome.bikesharing.service;
 
 
 import ro.iteahome.bikesharing.dao.UserDAO;
-import ro.iteahome.bikesharing.exception.BikeSharingBikeDoesNotExistException;
-import ro.iteahome.bikesharing.exception.BikeSharingException;
-import ro.iteahome.bikesharing.exception.BikeSharingUserAlreadyExistsException;
-import ro.iteahome.bikesharing.exception.BikeSharingWrongCredentialsException;
+import ro.iteahome.bikesharing.exception.*;
 import ro.iteahome.bikesharing.model.Bike;
 import ro.iteahome.bikesharing.model.User;
+
+import java.util.ArrayList;
 
 public class UserService {
 
@@ -52,6 +51,15 @@ public class UserService {
             }
         }
         throw new BikeSharingBikeDoesNotExistException();
+    }
+
+    public ArrayList<User>getUserList() throws BikeSharingTechnicalException {
+        ArrayList<User> userList = new ArrayList<>();
+        if (!userDao.readAllUsers().isEmpty()) {
+            userList = userDao.readAllUsers();
+        }
+        return userList;
+
     }
 
 }

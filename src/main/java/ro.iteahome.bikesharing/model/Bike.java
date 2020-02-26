@@ -27,13 +27,10 @@ Bike {
         this.brand = brand;
     }
 
-    public Bike getBikeById(int id) { return this; }
 
     @Override
     public String toString() {
-        return "Bike{" +
-                "brand='" + brand + '\'' +
-                '}';
+        return Integer.toString(this.id) + ". " + this.brand;
     }
 
 

@@ -8,18 +8,20 @@ import ro.iteahome.bikesharing.service.StationService;
 import java.util.Scanner;
 
 public class AdminAddStationUi {
-
-    public static void adminAddStation() {
+    StationService stationService;
+    AdminAddStationUi(StationService stationService){
+        this.stationService = stationService;
+    }
+    public  void adminAddStation() {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Station Name: ");
         String name = scanner.nextLine();
 
         try {
-            StationService stationService = new StationService();
-            int id = stationService.generateStationId();
+            int id = this.stationService.generateStationId();
             Station station = new Station(id, name);
-            stationService.addStation(station);
+            this.stationService.addStation(station);
             System.out.println("Station successfully added: " + station.getId() + " " + station.getName());
         } catch (
                 BikeSharingStationAlreadyExistsException e) {

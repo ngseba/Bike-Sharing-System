@@ -13,8 +13,8 @@ public class UserDAO {
 
     private static final String USERS_FILE = "src/main/resources/users.txt";
 
-    public List<User> readAllUsers() throws BikeSharingTechnicalException {
-        List<User> userList = new ArrayList<>();
+    public ArrayList<User> readAllUsers() throws BikeSharingTechnicalException {
+        ArrayList<User> userList = new ArrayList<>();
         try (BufferedReader userReader = new BufferedReader(new FileReader(USERS_FILE))) {
             String userLine = userReader.readLine();
             while(userLine != null) {

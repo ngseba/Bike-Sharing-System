@@ -12,7 +12,7 @@ import static java.lang.System.exit;
 
 public class SignUpUI {
 
-    public static void displaySignUp() {
+    public  void displaySignUp() {
 
         User user = new User();
         Scanner scanner = new Scanner(System.in);

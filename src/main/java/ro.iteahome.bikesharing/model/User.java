@@ -10,13 +10,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", isAdmin=" + isAdmin +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return this.id+". "+this.name+" "+this.email;
     }
 
     public User() {

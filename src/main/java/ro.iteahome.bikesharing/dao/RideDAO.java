@@ -12,8 +12,8 @@ public class RideDAO {
 
     private static final String RIDES_FILE = "src/main/resources/rides.txt";
 
-    public List<Ride> readAllRides() throws BikeSharingTechnicalException {
-        List<Ride> rideList = new ArrayList<>();
+    public ArrayList<Ride> readAllRides() throws BikeSharingTechnicalException {
+        ArrayList<Ride> rideList = new ArrayList<>();
         try (BufferedReader rideReader = new BufferedReader(new FileReader(RIDES_FILE))) {
             String rideLine = rideReader.readLine();
             while(rideLine != null) {

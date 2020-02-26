@@ -1,53 +1,76 @@
 package ro.iteahome.bikesharing.ui;
 
+import ro.iteahome.bikesharing.model.Bike;
+import ro.iteahome.bikesharing.model.Station;
+import ro.iteahome.bikesharing.service.BikeService;
+import ro.iteahome.bikesharing.service.RideService;
+import ro.iteahome.bikesharing.service.StationService;
+import ro.iteahome.bikesharing.service.UserService;
+import sun.applet.Main;
+
 import java.util.Scanner;
 
 import static java.lang.System.exit;
 
 public class AdminOptionsUi {
+    private StationService stationService = new StationService();
+    private BikeService bikeService = new BikeService();
+    private RideService rideService = new RideService();
+    private UserService userService = new UserService();
+    private AdminAddStationUi adminAddStationUi = new AdminAddStationUi(this.stationService);
+    private AdminAddBikeUI adminAddBikeUI = new AdminAddBikeUI(this.stationService,this.bikeService);;
+    private AdminHistoryBorrowedBikesUI adminHistoryBorrowedBikesUI = new AdminHistoryBorrowedBikesUI(this.stationService,this.bikeService,this.rideService,this.userService);
+    private NumberOfBikesUI numberOfBikesUI = new NumberOfBikesUI(this.stationService,this.bikeService);
+    private StationGreatestBrandBikesUI stationGreatestBrandBikesUI = new StationGreatestBrandBikesUI(this.stationService,this.bikeService);
 
-    public static void enteringAdminOptionsUI() {
 
-        printMainMessageAndHandleAction("What do you want to do today? \n" + "1. View Users.\n" +
-                "2. View Stations.\n" + "3. View Bikes per Stations.\n" + "4. Top 5 Users.\n" + "5. Top 5 Most Used Stations.\n" +
-                "6. Top 5 Most Used Bikes.\n" + "7. Add New Station.\n" + "8. Add New Bike.\n " + "B. Go back. \n" + "X. Exit session.");
+    public  void enteringAdminOptionsUI() {
+
+        printMainMessageAndHandleAction("What do you want to do today? \n" + "1. Add new Station.\n" +
+                "2. Add new Bike .\n" + "3. History of borrowed bikes per user.\n" + "4. User who borrowed the most bikes in the last 6 months\n" + "5. The most common day of the week when bikes are borrowed.\n" +
+                "6. Popular stations per User.\n" + "7. Top 5 Station per number of borrowed bikes.\n" + "8. Check number of bikes\n" + "9. Station that has the greatest number of brand bikes\n"+ "B. Go back. \n" + "X. Exit session.");
 
     }
 
-    public static void printMainMessageAndHandleAction(String message) {
-        System.out.println(message);
+    public  void printMainMessageAndHandleAction(String message) {
         Scanner userOptions = new Scanner(System.in);
-        String option = userOptions.nextLine();
-
-        try {
+        String option = new String();
+        while(!option.equals('x')){
+            System.out.println(message);
+            option = userOptions.nextLine();
+            try {
             switch (option) {
                 case "1":
-                    //
+                    this.adminAddStationUi.adminAddStation();
                     break;
                 case "2":
-                    //
+                    this.adminAddBikeUI.adminAddBike();
                     break;
                 case "3":
-                    //
+                    this.adminHistoryBorrowedBikesUI.printHistoryOfBorrowedBikes();
                     break;
                 case "4":
-                    //
+                    // User who borrowed the most bikes in the last 6 months
                     break;
                 case "5":
-                    //
+                   // The most common day of the week when bikes are borrowed
                     break;
                 case "6":
-                //
+                    //Popular stations per User
                     break;
                 case "7":
-                    AdminAddStationUi.adminAddStation();
+                    //7. Top 5 Station per number of borrowed bikes
                     break;
                 case "8":
-                    AdminAddBikeUI.adminAddBikeUI();
+                    this.numberOfBikesUI.printNumberOfBikes();
+                    break;
+                case "9":
+                    this.stationGreatestBrandBikesUI.printStationWithGreatestNumberOfBrandBikes();
                     break;
                 case "b":
                 case "B":
-                    MainUI.enteringUI();
+                    MainUI mainUI = new MainUI();
+                    mainUI.enteringUI();
                 case "x":
                 case "X":
                     System.out.println("You have terminated your session. Thank you and see you soon!");
@@ -56,9 +79,9 @@ public class AdminOptionsUi {
                     break;
 
                 default:
-                    printMainMessageAndHandleAction("Error. Not a valid option. Press: \n" + "1. View Users.\n" +
-                            "2. View Stations.\n" + "3. View Bikes per Stations.\n" + "4. Top 5 Users.\n" + "5. Top 5 Most Used Stations.\n" +
-                            "6. Top 5 Most Used Bikes.\n" + "7. Add New Station.\n" + "8. Add New Bike.\n " + "B. Go back. \n" + "X. Exit session.");
+                    printMainMessageAndHandleAction("What do you want to do today? \n" + "1. Add new Station.\n" +
+                            "2. Add new Bike .\n" + "3. History of borrowed bikes per user.\n" + "4. User who borrowed the most bikes in the last 6 months\n" + "5. The most common day of the week when bikes are borrowed.\n" +
+                            "6. Popular stations per User.\n" + "7. Top 5 Station per number of borrowed bikes.\n" + "8. Check number of bikes\n " + "9. Station that has the greatest number of brand bikes\n "+ "B. Go back. \n" + "X. Exit session.");
                     return;
 
             }
@@ -66,6 +89,8 @@ public class AdminOptionsUi {
             e.printStackTrace();
 
         }
+        }
+
 
     }
 }

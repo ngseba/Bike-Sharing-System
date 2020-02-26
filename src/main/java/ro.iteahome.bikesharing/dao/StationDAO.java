@@ -6,6 +6,7 @@ import ro.iteahome.bikesharing.model.Station;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -13,21 +14,21 @@ public class StationDAO {
 
     private static final String STATIONS_FILE = "src/main/resources/stations.txt";
 
-    public List<Station> readAllStations() throws BikeSharingTechnicalException {
-        List<Station> stationList = new ArrayList<>();
+    public HashMap<Integer,Station> readAllStations() throws BikeSharingTechnicalException {
+        HashMap<Integer,Station> stationMap = new HashMap<>();
         try (BufferedReader stationReader = new BufferedReader(new FileReader(STATIONS_FILE))) {
             String stationLine = stationReader.readLine();
             while(stationLine != null) {
                 String[] stationValues = stationLine.split(";");
                 int id = Integer.parseInt(stationValues[0]);
                 String name = stationValues[1];
-                stationList.add(new Station(id, name));
+                stationMap.put(id,new Station(id,name));
                 stationLine = stationReader.readLine();
             }
         } catch (IOException e) {
             throw new BikeSharingFileException("Error reading stations", e);
         }
-        return stationList;
+        return stationMap;
     }
 
     public void writeStation(Station station) throws BikeSharingTechnicalException {

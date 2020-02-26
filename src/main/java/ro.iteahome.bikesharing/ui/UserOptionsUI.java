@@ -1,57 +1,88 @@
 package ro.iteahome.bikesharing.ui;
 
+import ro.iteahome.bikesharing.model.Ride;
+import ro.iteahome.bikesharing.model.User;
+import ro.iteahome.bikesharing.service.BikeService;
+import ro.iteahome.bikesharing.service.RideService;
+import ro.iteahome.bikesharing.service.StationService;
+
 import java.util.Scanner;
 
 import static java.lang.System.exit;
 
 public class UserOptionsUI {
-    public static void enteringUserOptionsUI() {
-        printMainMessageAndHandleAction("What do you want to do today? \n" + "1. Ride.\n" + "2. View Previous Rides.\n" +
-                "3. View All Stations.\n" + "4. View Most Used Stations.\n" + "5. Most Used Bikes.\n" + "B. Go back. \n" + "X. Exit session.");
+    private StationService stationService = new StationService();
+    private BikeService bikeService = new BikeService();
+    private RideService rideService = new RideService();
+    private User user;
+    private UserHistoryBorrowedBikesUI userHistoryBorrowedBikesUI;
+    private AddRideUI addRideUI;
+    private NumberOfBikesUI numberOfBikesUI = new NumberOfBikesUI(this.stationService,this.bikeService);
+    private StationGreatestBrandBikesUI stationGreatestBrandBikesUI = new StationGreatestBrandBikesUI(this.stationService,this.bikeService);
+
+
+    public UserOptionsUI(User user) {
+        this.user = user;
     }
 
-    public static void printMainMessageAndHandleAction(String message) {
+    public  void enteringUserOptionsUI() {
+        printMainMessageAndHandleAction(" What do you want to do today? \n" + "1. Ride.\n" + "2. View User Profile.\n" +
+                "3. View Ride History.\n" + "4. Top 5 Station per number of borrowed bikes.\n" + "5. Check number of bikes.\n" +"6. Station that has the greatest number of brand bikes\n" + "B. Go back. \n" + "X. Exit session.");
+    }
+
+    public  void printMainMessageAndHandleAction(String message) {
         System.out.println(message);
-        Scanner userOptions = new Scanner(System.in);
-        String option = userOptions.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        String option = new String();
+        while(!option.equals('x')){
+            System.out.println(message);
+            option = scanner.nextLine();
+            try {
+                switch (option) {
+                    case "1":
+                        this.addRideUI = new AddRideUI(this.stationService,this.bikeService,this.rideService,this.user);
+                        this.addRideUI.displayAddRideUI();
+                        break;
+                    case "2":
+                        System.out.println(user);
+                        break;
+                    case "3":
+                        this.userHistoryBorrowedBikesUI = new UserHistoryBorrowedBikesUI(this.stationService,this.bikeService,this.rideService,this.user);
+                        this.userHistoryBorrowedBikesUI.printHistoryOfBorrowedBikes();
+                        break;
+                    case "4":
+                        // Top 5 Station per number of borrowed bikes
+                        break;
+                    case "5":
+                        this.numberOfBikesUI.printNumberOfBikes();
+                        break;
+                    case "6":
+                        this.stationGreatestBrandBikesUI.printStationWithGreatestNumberOfBrandBikes();
+                        break;
+                    case "b":
+                    case "B":
+                        MainUI mainUI = new MainUI();
+                        mainUI.enteringUI();
+                    case "x":
+                    case "X":
+                        System.out.println("You have terminated your session. Thank you and see you soon!");
+                        exit(0);
 
-        try {
-            switch (option) {
-                case "1":
-                    AddRideUI.displayAddRideUI();
-                    break;
-                case "2":
-                    //RideService.printrideslist();
-                    break;
-                case "3":
-                    UserListBikesUI.listStations();
-                    break;
-                case "4":
-                    //ride service
-                    break;
-                case "5":
-                    //ride service
-                case "b":
-                case "B":
-                    MainUI.enteringUI();
-                case "x":
-                case "X":
-                    System.out.println("You have terminated your session. Thank you and see you soon!");
-                    exit(0);
-
-                    break;
+                        break;
 
 
-                default:
-                    printMainMessageAndHandleAction("Error. Not a valid option. Press: \n" + "1. To Ride.\n" + "2. View Previous Rides.\n" + "3. View All Stations.\n" +
-                            "4. View Most Used Stations.\n" + "5. View Most Used Bikes.\n" + "B. Go back. \n" + "X. Exit session.");
-                    return;
+                    default:
+                        printMainMessageAndHandleAction(" What do you want to do today? \n" + "1. Ride.\n" + "2. View User Profile.\n" +
+                                "3. View Ride History.\n" + "4. Top 5 Station per number of borrowed bikes.\n" + "5. Check number of bikes.\n" +"6. Station that has the greatest number of brand bikes\n" + "B. Go back. \n" + "X. Exit session.");
+                        return;
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
 
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-
         }
+
 
     }
 }

@@ -2,6 +2,7 @@ package ro.iteahome.bikesharing.service;
 
 import ro.iteahome.bikesharing.dao.RideDAO;
 import ro.iteahome.bikesharing.exception.BikeSharingException;
+import ro.iteahome.bikesharing.exception.BikeSharingFileException;
 import ro.iteahome.bikesharing.exception.BikeSharingRideDoesNotExistException;
 
 import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
@@ -10,6 +11,7 @@ import ro.iteahome.bikesharing.model.Occurrence;
 import ro.iteahome.bikesharing.model.Ride;
 import ro.iteahome.bikesharing.model.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +30,6 @@ public class RideService {
 
     public int generateRideId() throws BikeSharingException {
         if (!rideDAO.readAllRides().isEmpty()) {
-            for (Ride ride : rideDAO.readAllRides()) {
-                System.out.println(ride);
-            }
             return rideDAO.readAllRides().size() + 1;
         }
         return 1;
@@ -62,12 +61,12 @@ public class RideService {
     }
 
     //print a list of rides
-    public void printRidesList(ArrayList<Ride> rides) throws BikeSharingException {
-        if (!rides.isEmpty())
-            for (Ride ride : rideDAO.readAllRides()) {
-                System.out.println(ride.toString());
-            }
-        else System.out.println("No available rides!");
+    public ArrayList<Ride> getAllRides() throws BikeSharingException {
+        ArrayList rideList = new ArrayList();
+        if (!rideDAO.readAllRides().isEmpty()) {
+             rideList = rideDAO.readAllRides();
+        }
+        return rideList;
     }
 
 
@@ -83,6 +82,17 @@ public class RideService {
 
         }
         return rides;
+    }
+
+    public ArrayList<Ride> getBorrowedBikesHistory(int userId) throws BikeSharingTechnicalException {
+        ArrayList<Ride> rideList = new ArrayList<>();
+        for(Ride ride : rideDAO.readAllRides())
+        {
+            if(ride.getUserId()==userId)
+                rideList.add(ride);
+        }
+        return rideList;
+
     }
 
     //method to get a sorted list of stations

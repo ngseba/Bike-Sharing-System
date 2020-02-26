@@ -7,11 +7,13 @@ public class Station {
     private String name;
     ArrayList<Bike> availableBikes = new ArrayList<>();
 
+    public Station(){}
 
     public Station(int id, String name) {
         this.id = id;
         this.name = name;
     }
+
 
     public int getId() {
         return id;
@@ -31,8 +33,9 @@ public class Station {
 
     public Station getStationById(int id){ return this;}
 
-    public void addBike(Bike bike){
-        this.availableBikes.add(bike);
+    public void setAvailableBikes(ArrayList<Bike> availableBikes){
+        this.availableBikes = availableBikes;
+
     }
 
     public ArrayList<Bike> getAvailableBikes(){
@@ -44,11 +47,10 @@ public class Station {
 
     @Override
     public String toString() {
-        return "Station{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return  id +". "+this.name;
     }
+
+
 
 
 }

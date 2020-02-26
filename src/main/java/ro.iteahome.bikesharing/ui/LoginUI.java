@@ -8,8 +8,9 @@ import ro.iteahome.bikesharing.model.User;
 import java.util.Scanner;
 
 public class LoginUI {
-
-        public static void displayLogin () {
+    AdminOptionsUi adminOptionsUi = new AdminOptionsUi();
+    UserOptionsUI userOptionsUI;
+        public  void displayLogin() {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Email: ");
             String email = scanner.nextLine();
@@ -18,12 +19,14 @@ public class LoginUI {
             UserService userService = new UserService();
             try {
                 User loggedUser = userService.login(email, password);
+                userOptionsUI = new UserOptionsUI(loggedUser);
                 System.out.println("User successfully logged in: " + email);
 
                 if (loggedUser.getIsAdmin() == 1)
-                UserOptionsUI.enteringUserOptionsUI();
+                     adminOptionsUi.enteringAdminOptionsUI();
+
                 else {
-                    AdminOptionsUi.enteringAdminOptionsUI();
+                    userOptionsUI.enteringUserOptionsUI();
                 }
 
             } catch (BikeSharingWrongCredentialsException e) {
