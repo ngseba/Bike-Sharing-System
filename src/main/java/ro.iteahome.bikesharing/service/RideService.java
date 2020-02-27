@@ -12,7 +12,9 @@ import ro.iteahome.bikesharing.model.Ride;
 import ro.iteahome.bikesharing.model.User;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +25,13 @@ public class RideService {
     private RideDAO rideDAO = new RideDAO();
     private BikeService bikeService = new BikeService();
     private StationService stationService = new StationService();
-    private UserService userService = new UserService();
+
+
+    public RideService(BikeService bikeService,StationService stationService){
+        this.bikeService = bikeService;
+        this.stationService = stationService;
+    }
+
 
 
 
@@ -159,30 +167,31 @@ public class RideService {
     //based of the number of occurrences in the rides file
     //user that had raided most times
     //will be first
-    public void getSortedListOfOccurrencesByUser() throws BikeSharingException {
+    public User getSortedListOfOccurrencesByUser() throws BikeSharingException {
         List<Occurrence> occurencesByUser = new ArrayList();
         List<Integer> listOfExistingIds = new ArrayList();
         for (Ride ride : rideDAO.readAllRides()) {
-            Occurrence newOccurrence = new Occurrence(ride.getUserId(), 1);
-            if (occurencesByUser.isEmpty()) {
-                occurencesByUser.add(newOccurrence);
-                listOfExistingIds.add(newOccurrence.getId());
-            }
-            else
-            if (listOfExistingIds.contains(newOccurrence.getId()))
-                for (Occurrence o : occurencesByUser) {
-                    if (o.getId() == newOccurrence.getId())
-                        o.increaseNumberOfOccurences();
+            if(ride.getDate().compareTo(LocalDate.now().minus(6, ChronoUnit.MONTHS))>=0)
+            { Occurrence newOccurrence = new Occurrence(ride.getUserId(), 1);
+                if (occurencesByUser.isEmpty()) {
+                    occurencesByUser.add(newOccurrence);
+                    listOfExistingIds.add(newOccurrence.getId());
                 }
-            else {
-                occurencesByUser.add(newOccurrence);
-                listOfExistingIds.add(newOccurrence.getId());
+                else
+                if (listOfExistingIds.contains(newOccurrence.getId()))
+                    for (Occurrence o : occurencesByUser) {
+                        if (o.getId() == newOccurrence.getId())
+                            o.increaseNumberOfOccurences();
+                    }
+                else {
+                    occurencesByUser.add(newOccurrence);
+                    listOfExistingIds.add(newOccurrence.getId());
+                }
             }
 
         }
         occurencesByUser.sort(Occurrence::compareTo);
-        for (Occurrence o : occurencesByUser)
-            System.out.println("User " + o.getId() + " " + userService.getUserById(o.getId()).getName() + " has used a bike " + o.getNumberOfOccurences() + " times");
+        return userService.getUserById(occurencesByUser.get(0).getId());
     }
 
     //method to get a sorted list of bikes

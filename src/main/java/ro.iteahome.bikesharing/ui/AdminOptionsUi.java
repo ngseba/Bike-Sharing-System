@@ -20,7 +20,7 @@ public class AdminOptionsUi {
     private AdminHistoryBorrowedBikesUI adminHistoryBorrowedBikesUI = new AdminHistoryBorrowedBikesUI(this.stationService,this.bikeService,this.rideService,this.userService);
     private NumberOfBikesUI numberOfBikesUI = new NumberOfBikesUI(this.stationService,this.bikeService);
     private StationGreatestBrandBikesUI stationGreatestBrandBikesUI = new StationGreatestBrandBikesUI(this.stationService,this.bikeService);
-
+    private UserBorrowedMostBikesUI userBorrowedMostBikesUI = new UserBorrowedMostBikesUI(this.rideService);
 
     public  void enteringAdminOptionsUI() {
 
@@ -48,7 +48,7 @@ public class AdminOptionsUi {
                     this.adminHistoryBorrowedBikesUI.printHistoryOfBorrowedBikes();
                     break;
                 case "4":
-                    //user who borrowed most bikes in the last 6 months
+                    this.userBorrowedMostBikesUI.printUserWhoBorrowedMostBikes();
                     break;
                 case "5":
                     System.out.println(this.rideService.getMostCommonDay());
