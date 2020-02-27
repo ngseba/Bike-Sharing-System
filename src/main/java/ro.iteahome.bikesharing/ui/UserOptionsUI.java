@@ -12,7 +12,7 @@ import static java.lang.System.exit;
 public class UserOptionsUI {
     private StationService stationService = new StationService();
     private BikeService bikeService = new BikeService();
-    private RideService rideService = new RideService();
+    private RideService rideService = new RideService(this.bikeService);
     private User user;
     private UserHistoryBorrowedBikesUI userHistoryBorrowedBikesUI;
     private AddRideUI addRideUI;

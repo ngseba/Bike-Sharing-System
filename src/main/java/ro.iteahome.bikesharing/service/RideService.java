@@ -23,17 +23,11 @@ import java.util.Map;
 public class RideService {
 
     private RideDAO rideDAO = new RideDAO();
-    private BikeService bikeService = new BikeService();
-    private StationService stationService = new StationService();
+    private BikeService bikeService;
 
-
-    public RideService(BikeService bikeService,StationService stationService){
+    public RideService(BikeService bikeService){
         this.bikeService = bikeService;
-        this.stationService = stationService;
     }
-
-
-
 
     public void addRide(Ride newRide) throws BikeSharingException {
         rideDAO.writeRide(newRide);
@@ -170,6 +164,7 @@ public class RideService {
     public User getSortedListOfOccurrencesByUser() throws BikeSharingException {
         List<Occurrence> occurencesByUser = new ArrayList();
         List<Integer> listOfExistingIds = new ArrayList();
+        UserService userService = new UserService();
         for (Ride ride : rideDAO.readAllRides()) {
             if(ride.getDate().compareTo(LocalDate.now().minus(6, ChronoUnit.MONTHS))>=0)
             { Occurrence newOccurrence = new Occurrence(ride.getUserId(), 1);

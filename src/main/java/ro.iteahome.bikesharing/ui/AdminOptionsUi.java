@@ -13,7 +13,7 @@ import static java.lang.System.exit;
 public class AdminOptionsUi {
     private StationService stationService = new StationService();
     private BikeService bikeService = new BikeService();
-    private RideService rideService = new RideService();
+    private RideService rideService = new RideService(this.bikeService);
     private UserService userService = new UserService();
     private AdminAddStationUi adminAddStationUi = new AdminAddStationUi(this.stationService);
     private AdminAddBikeUI adminAddBikeUI = new AdminAddBikeUI(this.stationService,this.bikeService);;
