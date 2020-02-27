@@ -100,7 +100,7 @@ public class RideService {
     }
 
 
-    //get all rides for a certain station by stationId - MOST POPULAR STATION
+    //get all rides for a certain station by stationId
     //returns empty list or list of rides
     public ArrayList<Ride> getAllRidesByStartStationId(int startStationId) throws BikeSharingException {
         ArrayList rides = new ArrayList<Ride>();
@@ -152,8 +152,15 @@ public class RideService {
 
             }
         occurencesByStation.sort(Occurrence::compareTo);
-        for (Occurrence o : occurencesByStation)
-            System.out.println("Station with id " + o.getId() + " has been used " + o.getNumberOfOccurences() + " times");
+
+        System.out.println("Top stations by usage: ");
+
+        int topStations = 5;
+        if (topStations > listOfExistingIds.size())
+            topStations = listOfExistingIds.size();
+
+        for (int i = 0; i < topStations; i++)
+            System.out.println("Station with id " + occurencesByStation.get(i).getId()+ " has been used " + occurencesByStation.get(i).getNumberOfOccurences() + " times");
 
         }
 
@@ -215,7 +222,15 @@ public class RideService {
 
         }
         occurencesByBike.sort(Occurrence::compareTo);
-        for (Occurrence o : occurencesByBike)
-            System.out.println("Bike " + o.getId() + " " + bikeService.getBikeById(o.getId()).getBrand() + " has been used " + o.getNumberOfOccurences() + " times");
+
+        System.out.println("Top bikes by usage: ");
+
+        int topBikes = 5;
+        if (topBikes > listOfExistingIds.size())
+            topBikes = listOfExistingIds.size();
+
+        for (int i = 0; i < topBikes; i++)
+            System.out.println("Bike with id " + occurencesByBike.get(i).getId()+ " has been used " + occurencesByBike.get(i).getNumberOfOccurences() + " times");
+
     }
 }
