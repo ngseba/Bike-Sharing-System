@@ -5,6 +5,8 @@ import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
 import ro.iteahome.bikesharing.model.Ride;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,8 @@ public class RideDAO {
                 int bikeId = Integer.parseInt(rideValues[2]);
                 int startStationId = Integer.parseInt(rideValues[3]);
                 int endStationId = Integer.parseInt(rideValues[4]);
-                rideList.add(new Ride(id, userId, bikeId, startStationId, endStationId));
+                LocalDate date = LocalDate.parse(rideValues[5],DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                rideList.add(new Ride(id, userId, bikeId, startStationId, endStationId,date));
                 rideLine = rideReader.readLine();
             }
         } catch (IOException e) {
@@ -48,6 +51,8 @@ public class RideDAO {
             bw.write(String.valueOf(ride.getStartStationId()));
             bw.write(";");
             bw.write(String.valueOf(ride.getEndStationId()));
+            bw.write(";");
+            bw.write(ride.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
         } catch (IOException e) {
             throw new BikeSharingFileException("Error writing ride to file", e);

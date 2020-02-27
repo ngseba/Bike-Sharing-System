@@ -9,6 +9,7 @@ import ro.iteahome.bikesharing.service.RideService;
 import ro.iteahome.bikesharing.service.StationService;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -56,9 +57,10 @@ public class AddRideUI {
 
         //User id - has to be passed from the UI above!!!
         int userId = this.user.getId();
+        LocalDate date = LocalDate.now();
 
         //add the ride to the rides file
-        Ride ride = new Ride(rideService.generateRideId(), userId, bikeId, startStationId,endStationId);
+        Ride ride = new Ride(rideService.generateRideId(), userId, bikeId, startStationId,endStationId,date);
         rideService.addRide(ride);
 
         //move the place of the bike; change the entry in bikeStations file

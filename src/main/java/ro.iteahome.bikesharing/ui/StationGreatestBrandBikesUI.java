@@ -1,8 +1,6 @@
 package ro.iteahome.bikesharing.ui;
 
 import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
-import ro.iteahome.bikesharing.model.Bike;
-import ro.iteahome.bikesharing.model.Station;
 import ro.iteahome.bikesharing.service.BikeService;
 import ro.iteahome.bikesharing.service.StationService;
 

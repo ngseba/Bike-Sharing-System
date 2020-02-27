@@ -1,12 +1,10 @@
 package ro.iteahome.bikesharing.ui;
 
-import ro.iteahome.bikesharing.model.Bike;
-import ro.iteahome.bikesharing.model.Station;
+
 import ro.iteahome.bikesharing.service.BikeService;
 import ro.iteahome.bikesharing.service.RideService;
 import ro.iteahome.bikesharing.service.StationService;
 import ro.iteahome.bikesharing.service.UserService;
-import sun.applet.Main;
 
 import java.util.Scanner;
 
@@ -50,13 +48,13 @@ public class AdminOptionsUi {
                     this.adminHistoryBorrowedBikesUI.printHistoryOfBorrowedBikes();
                     break;
                 case "4":
-                    // User who borrowed the most bikes in the last 6 months
+                    //user who borrowed most bikes in the last 6 months
                     break;
                 case "5":
-                   // The most common day of the week when bikes are borrowed
+                    System.out.println(this.rideService.getMostCommonDay());
                     break;
                 case "6":
-                    //Popular stations per User
+                    //popular stations per user
                     break;
                 case "7":
                     //7. Top 5 Station per number of borrowed bikes

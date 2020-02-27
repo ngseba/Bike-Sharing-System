@@ -1,6 +1,5 @@
 package ro.iteahome.bikesharing.ui;
 
-import ro.iteahome.bikesharing.model.Ride;
 import ro.iteahome.bikesharing.model.User;
 import ro.iteahome.bikesharing.service.BikeService;
 import ro.iteahome.bikesharing.service.RideService;

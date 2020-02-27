@@ -12,8 +12,11 @@ import ro.iteahome.bikesharing.model.Ride;
 import ro.iteahome.bikesharing.model.User;
 
 import java.lang.reflect.Array;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RideService {
 
@@ -33,6 +36,31 @@ public class RideService {
             return rideDAO.readAllRides().size() + 1;
         }
         return 1;
+    }
+
+    public String getMostCommonDay() throws BikeSharingTechnicalException {
+        ArrayList<Ride> rideList = new ArrayList<>();
+        if (!rideDAO.readAllRides().isEmpty()) {
+            rideList = rideDAO.readAllRides();
+        }
+        HashMap<String,Integer> freqDays = new HashMap<>();
+        for(Ride ride : rideList){
+            String day = ride.getDate().format(DateTimeFormatter.ofPattern("EEEE"));
+            int counter=freqDays.get(day)!=null ? freqDays.get(day):0;
+            freqDays.put(day,counter+1);
+        }
+        String commonDay = new String();
+        int max = 0;
+        for(Map.Entry<String,Integer> entry : freqDays.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+            if(value > max)
+            {
+                max = value;
+                commonDay = key;
+            }
+        }
+        return commonDay;
     }
 
     public Ride getRideById(int id) throws BikeSharingException {
@@ -100,7 +128,7 @@ public class RideService {
     //station that has been used as a startStation most times
     //will be first
     //n defines how many of that list we want
-    public void getSortedListOfOccurencesByStartStation(int n) throws BikeSharingTechnicalException {
+    public void getSortedListOfOccurencesByStartStation() throws BikeSharingTechnicalException {
         List<Occurrence> occurencesByStation = new ArrayList();
         List<Integer> listOfExistingIds = new ArrayList();
         for (Ride ride : rideDAO.readAllRides()) {
