@@ -17,10 +17,10 @@ public class AdminOptionsUi {
     private RideService rideService = new RideService(this.stationService,this.bikeService);
     private AdminAddStationUi adminAddStationUi = new AdminAddStationUi(this.stationService);
     private AdminAddBikeUI adminAddBikeUI = new AdminAddBikeUI(this.stationService,this.bikeService);;
-    private AdminHistoryBorrowedBikesUI adminHistoryBorrowedBikesUI = new AdminHistoryBorrowedBikesUI(this.rideService,this.userService);
+    private AdminHistoryBorrowedBikesUI adminHistoryBorrowedBikesUI = new AdminHistoryBorrowedBikesUI(this.rideService);
     private NumberOfBikesUI numberOfBikesUI = new NumberOfBikesUI(this.stationService,this.bikeService);
     private StationGreatestBrandBikesUI stationGreatestBrandBikesUI = new StationGreatestBrandBikesUI(this.stationService,this.bikeService);
-    private UserBorrowedMostBikesUI userBorrowedMostBikesUI = new UserBorrowedMostBikesUI(this.userService,this.rideService);
+    private UserBorrowedMostBikesUI userBorrowedMostBikesUI = new UserBorrowedMostBikesUI(this.rideService);
     private TopStationsUI topStationsUI = new TopStationsUI(this.rideService);
     private TopStationsUserUI topStationsUserUI = new TopStationsUserUI(this.rideService);
 

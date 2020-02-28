@@ -1,0 +1,3 @@
+Top 5 Station per number of borrowed bikes :
+1. Centru - 7 borrowed bikes
+2. Zorilor - 1 borrowed bikes

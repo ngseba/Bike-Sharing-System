@@ -3,7 +3,6 @@ package ro.iteahome.bikesharing.service;
 
 import ro.iteahome.bikesharing.dao.UserDAO;
 import ro.iteahome.bikesharing.exception.*;
-import ro.iteahome.bikesharing.model.Bike;
 import ro.iteahome.bikesharing.model.User;
 
 import java.util.ArrayList;

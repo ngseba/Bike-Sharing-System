@@ -1,39 +1,42 @@
 package ro.iteahome.bikesharing.ui;
 
 import ro.iteahome.bikesharing.exception.BikeSharingException;
-import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
+import ro.iteahome.bikesharing.model.Query;
 import ro.iteahome.bikesharing.model.Ride;
 import ro.iteahome.bikesharing.model.User;
-import ro.iteahome.bikesharing.service.BikeService;
-import ro.iteahome.bikesharing.service.RideService;
-import ro.iteahome.bikesharing.service.StationService;
-import ro.iteahome.bikesharing.service.UserService;
+import ro.iteahome.bikesharing.service.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminHistoryBorrowedBikesUI {
     private RideService rideService;
-    private UserService userService;
-    AdminHistoryBorrowedBikesUI(RideService rideService,UserService userService){
+    private UserService userService = new UserService();
+    AdminHistoryBorrowedBikesUI(RideService rideService){
         this.rideService = rideService;
-        this.userService = userService;
     }
 
 
     public void printHistoryOfBorrowedBikes() throws BikeSharingException {
+        QueryService queryService = new QueryService();
+        Query query = new Query();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Users :");
         ArrayList<User> userList = userService.getUserList();
         for(User user : userList){
             System.out.println(user);
         }
-        Scanner scanner = new Scanner(System.in);
         int userId = scanner.nextInt();
         ArrayList<Ride> rideList = rideService.getBorrowedBikesHistory(userId);
-        System.out.println("History of borrowed bikes for the user "+userService.getUserById(userId).getName());
+        String message = "History of borrowed bikes for the user "+userService.getUserById(userId).getName();
+        System.out.println(message);
+        query.setMessage(message);
         for (Ride ride : rideList)
         {
-            System.out.println("Borrowed bike : \""+this.rideService.getBikeService().getBikeById(ride.getBikeId())+"\" from station : "+this.rideService.getStationService().getStationById(ride.getStartStationId()).getName()+" to the station : " +this.rideService.getStationService().getStationById(ride.getEndStationId()).getName());
+            String queryResult = "Borrowed bike : \""+this.rideService.getBikeService().getBikeById(ride.getBikeId())+"\" from station : "+this.rideService.getStationService().getStationById(ride.getStartStationId()).getName()+" to the station : " +this.rideService.getStationService().getStationById(ride.getEndStationId()).getName();
+            System.out.println(queryResult);
+            query.addQueryResult(queryResult);
         }
+        queryService.printQuery(query);
     }
 }
