@@ -133,3 +133,13 @@ Florin - borrowed 4 bikes.
 
 The user who borrowed the most bikes in the last 6 months :
 Florin - borrowed 3 bikes.
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru

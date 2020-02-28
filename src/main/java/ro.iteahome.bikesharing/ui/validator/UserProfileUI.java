@@ -10,7 +10,7 @@ public class UserProfileUI {
     public void printUserProfile(){
         System.out.println("User profile : ");
         System.out.println("Name :"+user.getName());
-        System.out.println("Email:"+user.getEmail());
-        System.out.println("Password"+user.getPassword());
+        System.out.println("Email: "+user.getEmail());
+        System.out.println("Password: "+user.getPassword());
     }
 }
