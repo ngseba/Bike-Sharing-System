@@ -13,14 +13,15 @@ import static java.lang.System.exit;
 public class AdminOptionsUi {
     private StationService stationService = new StationService();
     private BikeService bikeService = new BikeService();
-    private RideService rideService = new RideService(this.bikeService);
     private UserService userService = new UserService();
+    private RideService rideService = new RideService(this.stationService,this.bikeService);
     private AdminAddStationUi adminAddStationUi = new AdminAddStationUi(this.stationService);
     private AdminAddBikeUI adminAddBikeUI = new AdminAddBikeUI(this.stationService,this.bikeService);;
-    private AdminHistoryBorrowedBikesUI adminHistoryBorrowedBikesUI = new AdminHistoryBorrowedBikesUI(this.stationService,this.bikeService,this.rideService,this.userService);
+    private AdminHistoryBorrowedBikesUI adminHistoryBorrowedBikesUI = new AdminHistoryBorrowedBikesUI(this.rideService,this.userService);
     private NumberOfBikesUI numberOfBikesUI = new NumberOfBikesUI(this.stationService,this.bikeService);
     private StationGreatestBrandBikesUI stationGreatestBrandBikesUI = new StationGreatestBrandBikesUI(this.stationService,this.bikeService);
-    private UserBorrowedMostBikesUI userBorrowedMostBikesUI = new UserBorrowedMostBikesUI(this.rideService);
+    private UserBorrowedMostBikesUI userBorrowedMostBikesUI = new UserBorrowedMostBikesUI(this.userService,this.rideService);
+    private TopStationsUI topStationsUI = new TopStationsUI(this.rideService);
 
     public  void enteringAdminOptionsUI() {
 
@@ -57,7 +58,7 @@ public class AdminOptionsUi {
                     //popular stations per user
                     break;
                 case "7":
-                    //7. Top 5 Station per number of borrowed bikes
+                    this.topStationsUI.printTop5Stations();
                     break;
                 case "8":
                     this.numberOfBikesUI.printNumberOfBikes();

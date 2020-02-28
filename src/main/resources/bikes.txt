@@ -117,4 +117,4 @@
 118;Decathlon;8
 119;Decathlon;9
 120;Decathlon;10
-1;Pegas;2
+1;Pegas;1

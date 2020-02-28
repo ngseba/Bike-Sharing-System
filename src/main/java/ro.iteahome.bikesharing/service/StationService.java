@@ -7,6 +7,7 @@ import ro.iteahome.bikesharing.exception.BikeSharingException;
 import ro.iteahome.bikesharing.exception.BikeSharingStationAlreadyExistsException;
 import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
 import ro.iteahome.bikesharing.model.Bike;
+import ro.iteahome.bikesharing.model.Occurrence;
 import ro.iteahome.bikesharing.model.Station;
 
 import java.io.IOException;
@@ -44,6 +45,8 @@ public class StationService {
         stationDAO.writeStation(newStation);
         this.cacheStations();
     }
+
+
 
 
     public int generateStationId() throws BikeSharingException {

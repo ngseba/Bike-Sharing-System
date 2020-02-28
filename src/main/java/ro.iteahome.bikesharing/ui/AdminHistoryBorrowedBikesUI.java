@@ -13,16 +13,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminHistoryBorrowedBikesUI {
-    private StationService stationService;
-    private BikeService bikeService;
     private RideService rideService;
     private UserService userService;
-    AdminHistoryBorrowedBikesUI(StationService stationService,BikeService bikeService,RideService rideService,UserService userService){
-        this.stationService = stationService;
-        this.bikeService = bikeService;
+    AdminHistoryBorrowedBikesUI(RideService rideService,UserService userService){
         this.rideService = rideService;
         this.userService = userService;
     }
+
 
     public void printHistoryOfBorrowedBikes() throws BikeSharingException {
         System.out.println("Users :");
@@ -36,7 +33,7 @@ public class AdminHistoryBorrowedBikesUI {
         System.out.println("History of borrowed bikes for the user "+userService.getUserById(userId).getName());
         for (Ride ride : rideList)
         {
-            System.out.println("Borrowed bike : \""+bikeService.getBikeById(ride.getBikeId())+"\" from station : "+stationService.getStationById(ride.getStartStationId()).getName()+" to the station : " +stationService.getStationById(ride.getEndStationId()).getName());
+            System.out.println("Borrowed bike : \""+this.rideService.getBikeService().getBikeById(ride.getBikeId())+"\" from station : "+this.rideService.getStationService().getStationById(ride.getStartStationId()).getName()+" to the station : " +this.rideService.getStationService().getStationById(ride.getEndStationId()).getName());
         }
     }
 }

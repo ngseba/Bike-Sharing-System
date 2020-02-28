@@ -2,16 +2,13 @@ package ro.iteahome.bikesharing.service;
 
 import ro.iteahome.bikesharing.dao.RideDAO;
 import ro.iteahome.bikesharing.exception.BikeSharingException;
-import ro.iteahome.bikesharing.exception.BikeSharingFileException;
 import ro.iteahome.bikesharing.exception.BikeSharingRideDoesNotExistException;
-
 import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
-import ro.iteahome.bikesharing.model.Bike;
 import ro.iteahome.bikesharing.model.Occurrence;
 import ro.iteahome.bikesharing.model.Ride;
+import ro.iteahome.bikesharing.model.Station;
 import ro.iteahome.bikesharing.model.User;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -23,10 +20,20 @@ import java.util.Map;
 public class RideService {
 
     private RideDAO rideDAO = new RideDAO();
+    private StationService stationService;
     private BikeService bikeService;
 
-    public RideService(BikeService bikeService){
+    public RideService(StationService stationService,BikeService bikeService){
+        this.stationService = stationService;
         this.bikeService = bikeService;
+    }
+
+    public StationService getStationService() {
+        return stationService;
+    }
+
+    public BikeService getBikeService() {
+        return bikeService;
     }
 
     public void addRide(Ride newRide) throws BikeSharingException {
@@ -130,7 +137,7 @@ public class RideService {
     //station that has been used as a startStation most times
     //will be first
     //n defines how many of that list we want
-    public void getSortedListOfOccurencesByStartStation() throws BikeSharingTechnicalException {
+    public List<Occurrence> getSortedListOfOccurencesByStartStation() throws BikeSharingException {
         List<Occurrence> occurencesByStation = new ArrayList();
         List<Integer> listOfExistingIds = new ArrayList();
         for (Ride ride : rideDAO.readAllRides()) {
@@ -152,8 +159,7 @@ public class RideService {
 
             }
         occurencesByStation.sort(Occurrence::compareTo);
-        for (Occurrence o : occurencesByStation)
-            System.out.println("Station with id " + o.getId() + " has been used " + o.getNumberOfOccurences() + " times");
+      return occurencesByStation;
 
         }
 
@@ -161,7 +167,7 @@ public class RideService {
     //based of the number of occurrences in the rides file
     //user that had raided most times
     //will be first
-    public User getSortedListOfOccurrencesByUser() throws BikeSharingException {
+    public Occurrence getSortedListOfOccurrencesByUser() throws BikeSharingException {
         List<Occurrence> occurencesByUser = new ArrayList();
         List<Integer> listOfExistingIds = new ArrayList();
         UserService userService = new UserService();
@@ -186,7 +192,7 @@ public class RideService {
 
         }
         occurencesByUser.sort(Occurrence::compareTo);
-        return userService.getUserById(occurencesByUser.get(0).getId());
+        return occurencesByUser.get(0);
     }
 
     //method to get a sorted list of bikes
