@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class UserValidator {
 
-    public void validateUserCredentials(String email, String password) throws BikeSharingException {
+    public boolean validateUserCredentials(String email, String password) throws BikeSharingException {
         try {
             //TO DO: validate existing email& existing id
             validateEmailFormat(email);
@@ -18,13 +18,17 @@ public class UserValidator {
         } catch (BikeSharingInvalidEmailFormatException e) {
             e.printStackTrace();
             System.out.println("Invalid Email Format");
+            return false;
         } catch (BikeSharingPasswordTooShortException e){
             e.printStackTrace();
             System.out.println("The password has less than 6 characters");
+            return false;
         } catch (BikeSharingInvalidPasswordFormatException e){
             e.printStackTrace();
             System.out.println("The password has to have upper case letter and lower case letters, with no special characters or numbers");
+            return false;
         }
+        return true;
     }
 
     private void validateEmailFormat(String email) throws BikeSharingException {

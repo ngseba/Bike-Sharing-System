@@ -34,9 +34,6 @@ public class UserService {
 
     public int generateUserId() throws BikeSharingException {
         if (!userDao.readAllUsers().isEmpty()) {
-            for (User user : userDao.readAllUsers()) {
-                System.out.println(user);
-            }
             return userDao.readAllUsers().size() + 1;
         }
         return 1;

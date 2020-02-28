@@ -19,14 +19,14 @@ public class UserBorrowedMostBikesUI {
     }
     public void printUserWhoBorrowedMostBikes() throws BikeSharingException {
         Occurrence occurrence = this.rideService.getSortedListOfOccurrencesByUser();
-        User user = this.userService.getUserById(occurrence.getId());
-        int nrBikes = occurrence.getNumberOfOccurences();
-        String message = "The user who borrowed the most bikes in the last 6 months :";
-        String queryResult = user.getName()+" - borrowed "+nrBikes+" bikes.";
-        System.out.println(message);
-        System.out.println(queryResult);
-        this.query.setMessage(message);
-        this.query.addQueryResult(queryResult);
-        this.queryService.printQuery(this.query);
+            User user = this.userService.getUserById(occurrence.getId());
+            int nrBikes = occurrence.getNumberOfOccurences();
+            String message = "The user who borrowed the most bikes in the last 6 months :";
+            String queryResult = user.getName()+" - borrowed "+nrBikes+" bikes.";
+            System.out.println(message);
+            System.out.println(queryResult);
+            this.query.setMessage(message);
+            this.query.addQueryResult(queryResult);
+            this.queryService.printQuery(this.query);
     }
 }

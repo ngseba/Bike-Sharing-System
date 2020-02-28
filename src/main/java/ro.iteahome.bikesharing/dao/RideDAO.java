@@ -18,17 +18,18 @@ public class RideDAO {
         ArrayList<Ride> rideList = new ArrayList<>();
         try (BufferedReader rideReader = new BufferedReader(new FileReader(RIDES_FILE))) {
             String rideLine = rideReader.readLine();
-            while(rideLine != null) {
-                String[] rideValues = rideLine.split(";");
-                int id = Integer.parseInt(rideValues[0]);
-                int userId = Integer.parseInt(rideValues[1]);
-                int bikeId = Integer.parseInt(rideValues[2]);
-                int startStationId = Integer.parseInt(rideValues[3]);
-                int endStationId = Integer.parseInt(rideValues[4]);
-                LocalDate date = LocalDate.parse(rideValues[5],DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                rideList.add(new Ride(id, userId, bikeId, startStationId, endStationId,date));
-                rideLine = rideReader.readLine();
-            }
+            File file = new File(RIDES_FILE);
+                while(rideLine != null) {
+                    String[] rideValues = rideLine.split(";");
+                    int id = Integer.parseInt(rideValues[0]);
+                    int userId = Integer.parseInt(rideValues[1]);
+                    int bikeId = Integer.parseInt(rideValues[2]);
+                    int startStationId = Integer.parseInt(rideValues[3]);
+                    int endStationId = Integer.parseInt(rideValues[4]);
+                    LocalDate date = LocalDate.parse(rideValues[5],DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    rideList.add(new Ride(id, userId, bikeId, startStationId, endStationId,date));
+                    rideLine = rideReader.readLine();
+                }
         } catch (IOException e) {
             throw new BikeSharingFileException("Error reading rides", e);
         }

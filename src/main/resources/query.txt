@@ -1,3 +1,135 @@
 Top 5 Station per number of borrowed bikes :
 1. Centru - 7 borrowed bikes
 2. Zorilor - 1 borrowed bikes
+
+History of borrowed bikes for the user Ceva
+
+History of borrowed bikes for the user Seba
+
+Number of bikes by station :Centru
+12
+
+The station with the greatest number of Pegas bikes is :
+Centru
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+The station with the greatest number of Specialized bikes is :
+Zorilor
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+Top 5 Station per number of borrowed bikes :
+1. Centru - 1 borrowed bikes
+2. Gheorgheni - 1 borrowed bikes
+3. Manastur - 1 borrowed bikes
+
+Number of bikes by station :Zorilor and by brand :"Specialized" :
+0
+
+Number of bikes by station :Zorilor
+0
+13
+
+Number of bikes by brand :Specialized
+0
+13
+10
+
+Number of bikes by station :Zorilor and by brand :Specialized :
+0
+13
+10
+2
+
+Number of bikes by station :Zorilor and by brand :Specialized :
+2
+
+Number of bikes by station :Gruia and by brand :GT :
+2
+2
+
+Number of bikes by station :Centru and by brand :Specialized :
+2
+2
+0
+
+The station with the greatest number of GT bikes is :
+Gruia
+
+History of borrowed bikes for the user Tibi
+Borrowed bike : "21. Specialized" from station : Centru to the station : Zorilor
+Borrowed bike : "85. GT" from station : Gheorgheni to the station : Gruia
+Borrowed bike : "54. Kona" from station : Manastur to the station : Centru
+
+The user who borrowed the most bikes in the last 6 months :
+Tibi - borrowed 3 bikes.
+
+Top 3 stations for the user: Tibi
+1. Centru - 1 borrowed bikes
+2. Gheorgheni - 1 borrowed bikes
+3. Manastur - 1 borrowed bikes
+
+Top 5 Station per number of borrowed bikes :
+1. Centru - 1 borrowed bikes
+2. Gheorgheni - 1 borrowed bikes
+3. Manastur - 1 borrowed bikes
+
+Number of bikes by station :Gruia and by brand :GT :
+2
+
+The station with the greatest number of Specialized bikes is :
+Zorilor
+
+History of borrowed bikes for the user George
+Borrowed bike : "64. Trek" from station : Manastur to the station : Zorilor
+
+Top 5 Station per number of borrowed bikes :
+1. Manastur - 2 borrowed bikes
+2. Centru - 1 borrowed bikes
+3. Gheorgheni - 1 borrowed bikes
+
+The station with the greatest number of GT bikes is :
+Gruia
+
+History of borrowed bikes for the user Florin
+
+History of borrowed bikes for the user Seba
+
+History of borrowed bikes for the user Florin
+Borrowed bike : "48. B-Twin" from station : Plopilor to the station : Zorilor
+Borrowed bike : "70. Trek" from station : Borhanci to the station : Marasti
+Borrowed bike : "43. B-Twin" from station : Marasti to the station : Intre Lacuri
+Borrowed bike : "48. B-Twin" from station : Zorilor to the station : Manastur
+
+The user who borrowed the most bikes in the last 6 months :
+Florin - borrowed 4 bikes.
+
+The user who borrowed the most bikes in the last 6 months :
+Florin - borrowed 3 bikes.

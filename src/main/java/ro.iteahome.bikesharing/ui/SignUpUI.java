@@ -30,17 +30,21 @@ public class SignUpUI {
         UserValidator userValidator = new UserValidator();
 
         try {
-            userValidator.validateUserCredentials(email, password);
+            if(userValidator.validateUserCredentials(email, password))
+            { user.setEmail(email);
+                user.setPassword(password);
+                user.setIsAdmin(isAdmin);
+                user.setName(name);
 
-            user.setEmail(email);
-            user.setPassword(password);
-            user.setIsAdmin(isAdmin);
-            user.setName(name);
+                user.setId(userService.generateUserId());
 
-            user.setId(userService.generateUserId());
-
-            userService.signUp(user);
-            System.out.println("User successfully registered: " + user.getId() + " " + email + " " + user.getIsAdmin());
+                userService.signUp(user);
+                System.out.println("User successfully registered: " + user.getId() + " " + email + " " + user.getIsAdmin());
+            }
+            else
+                System.out.println("Failed to create user.");
+            MainUI mainUI = new MainUI();
+            mainUI.enteringUI();
         } catch (BikeSharingWrongCredentialsException e) {
             e.printStackTrace();
             System.out.println("Wrong Credentials");

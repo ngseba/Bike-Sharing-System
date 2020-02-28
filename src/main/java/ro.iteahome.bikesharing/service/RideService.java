@@ -1,9 +1,7 @@
 package ro.iteahome.bikesharing.service;
 
 import ro.iteahome.bikesharing.dao.RideDAO;
-import ro.iteahome.bikesharing.exception.BikeSharingException;
-import ro.iteahome.bikesharing.exception.BikeSharingRideDoesNotExistException;
-import ro.iteahome.bikesharing.exception.BikeSharingTechnicalException;
+import ro.iteahome.bikesharing.exception.*;
 import ro.iteahome.bikesharing.model.Occurrence;
 import ro.iteahome.bikesharing.model.Ride;
 import ro.iteahome.bikesharing.model.Station;
@@ -37,7 +35,10 @@ public class RideService {
     }
 
     public void addRide(Ride newRide) throws BikeSharingException {
+        if(this.stationService.stationHasBike(newRide.getStartStationId(),newRide.getBikeId()))
         rideDAO.writeRide(newRide);
+        else
+            throw new BikeSharingBikeDoesNotExistException();
     }
 
     public int generateRideId() throws BikeSharingException {
@@ -126,7 +127,7 @@ public class RideService {
         for(Ride ride : rideDAO.readAllRides())
         {
             if(ride.getUserId()==userId)
-                rideList.add(ride);
+            rideList.add(ride);
         }
         return rideList;
 
@@ -192,7 +193,9 @@ public class RideService {
 
         }
         occurencesByUser.sort(Occurrence::compareTo);
+        if(!occurencesByUser.isEmpty())
         return occurencesByUser.get(0);
+        return null;
     }
 
     //method to get a sorted list of bikes

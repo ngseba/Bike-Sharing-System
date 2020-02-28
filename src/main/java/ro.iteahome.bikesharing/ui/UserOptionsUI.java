@@ -4,6 +4,7 @@ import ro.iteahome.bikesharing.model.User;
 import ro.iteahome.bikesharing.service.BikeService;
 import ro.iteahome.bikesharing.service.RideService;
 import ro.iteahome.bikesharing.service.StationService;
+import ro.iteahome.bikesharing.ui.validator.UserProfileUI;
 
 import java.util.Scanner;
 
@@ -13,12 +14,13 @@ public class UserOptionsUI {
     private StationService stationService = new StationService();
     private BikeService bikeService = new BikeService();
     private RideService rideService = new RideService(this.stationService,this.bikeService);
-    private User user;
-    private UserHistoryBorrowedBikesUI userHistoryBorrowedBikesUI;
-    private AddRideUI addRideUI;
     private NumberOfBikesUI numberOfBikesUI = new NumberOfBikesUI(this.stationService,this.bikeService);
     private StationGreatestBrandBikesUI stationGreatestBrandBikesUI = new StationGreatestBrandBikesUI(this.stationService,this.bikeService);
-
+    private TopStationsUI topStationsUI = new TopStationsUI(this.rideService);
+    private UserHistoryBorrowedBikesUI userHistoryBorrowedBikesUI;
+    private UserProfileUI userProfileUI;
+    private AddRideUI addRideUI;
+    private User user;
 
     public UserOptionsUI(User user) {
         this.user = user;
@@ -43,14 +45,15 @@ public class UserOptionsUI {
                         this.addRideUI.displayAddRideUI();
                         break;
                     case "2":
-                        System.out.println(user);
+                        this.userProfileUI = new UserProfileUI(this.user);
+                        this.userProfileUI.printUserProfile();
                         break;
                     case "3":
                         this.userHistoryBorrowedBikesUI = new UserHistoryBorrowedBikesUI(this.stationService,this.bikeService,this.rideService,this.user);
                         this.userHistoryBorrowedBikesUI.printHistoryOfBorrowedBikes();
                         break;
                     case "4":
-                        // Top 5 Station per number of borrowed bikes
+                        this.topStationsUI.printTop5Stations();
                         break;
                     case "5":
                         this.numberOfBikesUI.printNumberOfBikes();

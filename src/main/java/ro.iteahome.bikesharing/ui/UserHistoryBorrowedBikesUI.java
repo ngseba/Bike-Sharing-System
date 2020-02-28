@@ -34,6 +34,7 @@ public class UserHistoryBorrowedBikesUI {
         for (Ride ride : rideList)
         {
             String queryResult = "Borrowed bike : \""+bikeService.getBikeById(ride.getBikeId())+"\" from station : "+stationService.getStationById(ride.getStartStationId()).getName()+" to the station : " +stationService.getStationById(ride.getEndStationId()).getName();
+            System.out.println(queryResult);
             this.query.addQueryResult(queryResult);
         }
         this.queryService.printQuery(this.query);

@@ -99,6 +99,21 @@ public class StationService {
         return greatestStation;
     }
 
+    public boolean stationHasBike(int stationId,int bikeId) throws BikeSharingException {
+        Station station = this.getStationById(stationId);
+        ArrayList<Bike> bikeList = this.getBikeList(stationId);
+        boolean hasBike = false;
+        if(!bikeList.isEmpty()){
+            for(Bike bike : bikeList){
+                if(bike.getId()==bikeId)
+                    hasBike = true;
+            }
+        }
+        return hasBike;
+
+
+    }
+
 
 
 }
