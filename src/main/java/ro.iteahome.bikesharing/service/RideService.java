@@ -137,10 +137,10 @@ public class RideService {
     //station that has been used as a startStation most times
     //will be first
     //n defines how many of that list we want
-    public List<Occurrence> getSortedListOfOccurencesByStartStation() throws BikeSharingException {
+    public List<Occurrence> getSortedListOfOccurencesByStartStation(ArrayList<Ride> rideList) throws BikeSharingException {
         List<Occurrence> occurencesByStation = new ArrayList();
         List<Integer> listOfExistingIds = new ArrayList();
-        for (Ride ride : rideDAO.readAllRides()) {
+        for (Ride ride : rideList) {
             Occurrence newOccurrence = new Occurrence(ride.getStartStationId(), 1);
             if (occurencesByStation.isEmpty()) {
                 occurencesByStation.add(newOccurrence);

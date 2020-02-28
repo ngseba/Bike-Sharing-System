@@ -22,6 +22,7 @@ public class AdminOptionsUi {
     private StationGreatestBrandBikesUI stationGreatestBrandBikesUI = new StationGreatestBrandBikesUI(this.stationService,this.bikeService);
     private UserBorrowedMostBikesUI userBorrowedMostBikesUI = new UserBorrowedMostBikesUI(this.userService,this.rideService);
     private TopStationsUI topStationsUI = new TopStationsUI(this.rideService);
+    private TopStationsUserUI topStationsUserUI = new TopStationsUserUI(this.rideService);
 
     public  void enteringAdminOptionsUI() {
 
@@ -55,7 +56,7 @@ public class AdminOptionsUi {
                     System.out.println(this.rideService.getMostCommonDay());
                     break;
                 case "6":
-                    //popular stations per user
+                    this.topStationsUserUI.printTopStationsPerUser();
                     break;
                 case "7":
                     this.topStationsUI.printTop5Stations();
