@@ -26,11 +26,11 @@ public class UserOptionsUI {
 
     public  void enteringUserOptionsUI() {
         printMainMessageAndHandleAction(" What do you want to do today? \n" + "1. Ride.\n" + "2. View User Profile.\n" +
-                "3. View Ride History.\n" + "4. Top 5 Station per number of borrowed bikes.\n" + "5. Check number of bikes.\n" +"6. Station that has the greatest number of brand bikes\n" + "B. Go back. \n" + "X. Exit session.");
+                "3. View Ride History.\n" + "4. Top 5 Station per number of borrowed bikes.\n" + "5. Check number of bikes.\n" +
+                "6. Station that has the greatest number of brand bikes. \n" + "B. Go back. \n" + "X. Exit session.");
     }
 
     public  void printMainMessageAndHandleAction(String message) {
-        System.out.println(message);
         Scanner scanner = new Scanner(System.in);
         String option = new String();
         while(!option.equals('x')){
