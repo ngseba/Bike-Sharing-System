@@ -1,0 +1,11 @@
+1;Centru
+2;Zorilor
+3;Marasti
+4;Manastur
+5;Gheorgheni
+6;Gruia
+7;Intre Lacuri
+8;Plopilor
+9;Someseni
+10;Borhanci
+11;Statie noua
